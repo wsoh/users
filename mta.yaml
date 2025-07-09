@@ -31,6 +31,12 @@ modules:
     path: web
     requires:
       - name: users-uaa
+      - name: srv_api
+        group: destinations
+        properties:
+          name: srv_api
+          url: '~{url}'
+          forwardAuthToken: true
 resources:
   - name: users-hdi-container
     type: com.sap.xs.hdi-container
