@@ -1,0 +1,29 @@
+ID: users
+_schema-version: "2.1"
+version: 0.0.1
+modules:
+  - name: users-db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+    requires:
+      - name: users-db-hdi-container
+  - name: users-srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 512M
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: users-db-hdi-container
+resources:
+  - name: users-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
