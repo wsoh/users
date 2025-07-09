@@ -3,7 +3,10 @@
 
 "use strict";
 
-const uuid = require("uuid/v4");
+//const uuid = require("uuid/v4");
+const {
+	v4: uuid
+} = require("uuid");
 const cds = require("@sap/cds");
 
 /**
@@ -14,6 +17,7 @@ module.exports = function (entities) {
 	const {
 		catalog
 	} = entities;
+
 	function validateEmail(email) {
 		var re =
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

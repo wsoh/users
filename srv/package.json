@@ -4,25 +4,32 @@
 	"version": "1.0.0",
 	"dependencies": {
 		"@sap/cds": "^9.1.0",
-		"express": "^5.1.0",
-		"@sap/xssec": "^4.8.0",
-		"@sap/hana-client": "^2.25.22"
+		"@sap/xssec": "^3.6.1",
+		"@sap/hana-client": "^2.25.22",
+		"uuid": "11.1.0",
+		"express": "4.19.2",
+		"@sap/xsenv": "5.1.0",
+		"hdb": "^0.16.0",
+		"@sap/hdbext": "8.0.3",
+		"@sap/logging": "8.1.0",
+		"@sap/audit-logging": "6.1.0",
+		"passport": "0.7.0",
+		"async": "3.2.5"
 	},
 	"engines": {
 		"node": ">=20"
 	},
-	"devDependencies": {},
+	"devDependencies": {"@cap-js/hana": "^2.1.1"},
 	"scripts": {
 		"postinstall": "npm dedupe && node .build.js",
-		"start": "node ./node_modules/@sap/cds/bin/serve.js gen/srv/csn.json",
-		"watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
+		"start": "node ./server.js"
 	},
 	"private": true,
 	"cds": {
 		"requires": {
 			"db": {
 				"kind": "hana",
-				"model": "gen/csn.json"
+				"model": "gen/srv/csn.json"
 			}
 		}
 	}
