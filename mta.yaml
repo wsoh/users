@@ -37,6 +37,7 @@ modules:
           name: srv_api
           url: '~{url}'
           forwardAuthToken: true
+      - name: users_ui5
 resources:
   - name: users-hdi-container
     type: com.sap.xs.hdi-container
@@ -44,3 +45,8 @@ resources:
       hdi-container-name: '${service-name}'
   - name: users-uaa
     type: com.sap.xs.uaa-space
+  - name: users_ui5
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: sapui5_sb
+      service-plan: sapui5-1.108
